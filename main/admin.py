@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Project, Milestone, Task
+from .models import Project, Milestone, Task, Configuration
 
 
 @admin.register(Project)
@@ -32,5 +32,12 @@ class TaskAdmin(admin.ModelAdmin):
     search_fields = ("title", "milestone__name")
 
 
-admin.site.site_header = "R4S TaskMaster Admin"
-admin.site.site_title = "R4S TaskMaster Admin Portal"
+@admin.register(Configuration)
+class MilestoneAdmin(admin.ModelAdmin):
+    list_display = ("name", "cloud_adresse", "erp_user", "erp_pw", "api_endpoint", "api_token", "created_at")
+    search_fields = ("name", "cloud_adresse__name")
+    list_filter = ("cloud_adresse",)
+
+
+admin.site.site_header = "R4S Macula Backend Admin"
+admin.site.site_title = "R4S Macula Backend Admin Portal"

@@ -37,3 +37,13 @@ class Task(models.Model):
 
     def __str__(self):
         return f"Task {self.milestone.project.name} - {self.title}"
+
+class Configuration(models.Model):
+    name = models.CharField(max_length=256)
+    cloud_adresse = models.CharField(max_length=100)
+    erp_user = models.CharField(max_length=100)
+    erp_pw = models.CharField(max_length=100)
+    api_endpoint = models.CharField(max_length=100)
+    api_token = models.CharField(max_length=256)
+    created_at = models.DateTimeField(auto_now_add=True)
+
